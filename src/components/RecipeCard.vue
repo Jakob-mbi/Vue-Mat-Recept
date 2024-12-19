@@ -1,12 +1,27 @@
 <script setup lang="ts">
-import { defineProps} from 'vue';
+import { defineProps, ref, computed} from 'vue';
 import { Recipe } from './types';
-import 'primeicons/primeicons.css'
 
-const props = defineProps<{
-    recepie:Recipe;
-}>();
 
+const props = defineProps({
+    recepie:{
+        type:Object as () => Recipe,
+        required:true
+    }
+});
+const showFullIngredients = ref(false);
+
+const toggleIngredients = () => {
+    showFullIngredients.value = !showFullIngredients.value;
+};
+
+const truncatedIngredients = computed(() => {
+    let ingredientsIndex = props.recepie.ingredients;
+    if(!showFullIngredients.value){
+        ingredientsIndex = ingredientsIndex.slice(0,3);
+    }
+    return ingredientsIndex;
+});
 </script>
 
 <template>
@@ -20,9 +35,13 @@ const props = defineProps<{
             
             <div class="mb-5">
                 <h3 class="text-green-500 mb-2">{{ props.recepie.ingredients.length}} Ingredients</h3>
-                <ul v-for="(ingredients,index) in props.recepie.ingredients" :key="index">
+                <ul v-for="(ingredients,index) in truncatedIngredients" :key="index">
                     <li>{{index + 1}}. {{ingredients.quantity}} {{ingredients.item }}</li>
                 </ul>
+                <button @click="toggleIngredients" class="text-green-500 hover:text-green-600 mt-5">
+                    {{ showFullIngredients ? 'Show less' : 'Show more'}}
+                   
+                </button>
             </div>
             
             
