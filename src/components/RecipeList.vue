@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { RouterLink } from 'vue-router';
 import recepieData from '../../public/recipes.json';
 import { RecipesData} from '@/types';
 import { ref } from 'vue';
@@ -8,7 +9,7 @@ defineProps(
     {
         limit:{
             type:Number,
-            default:3
+            
         },
         showButton:{
             type:Boolean,
@@ -31,10 +32,10 @@ const recipes = ref<RecipesData>(recepieData);
         </div>
     </section>
     <section v-if="showButton" class="m-auto max-w-lg my-10 px-6">
-      <a
-        href="/recipes"
+      <RouterLink
+        to="/recipes"
         class="block bg-black text-white text-center py-4 px-6 rounded-xl hover:bg-gray-700"
-        >View All Recipes</a
+        >View All Recipes</RouterLink
       >
     </section>
 

@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { defineProps, ref, computed} from 'vue';
 import type { Recipe } from './types';
+import { RouterLink } from 'vue-router';
 
 
 const props = defineProps({
@@ -59,7 +60,7 @@ const truncatedIngredients = computed(() => {
 
             </div>
             <RouterLink
-            to=""
+            :to="'/recipe/' + props.recepie.id"
             class="h-[36px] bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg text-center text-sm">
                 Read instructions
             </RouterLink>

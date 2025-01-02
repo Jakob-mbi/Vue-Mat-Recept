@@ -1,5 +1,6 @@
 <script setup>
 import Card from '@/components/Card.vue';
+import { RouterLink } from 'vue-router';
 </script>
 
 <template>
@@ -11,24 +12,24 @@ import Card from '@/components/Card.vue';
                 <p class="mt-2 mb-4">
                     Browse our Recipes to find the perfect meal for you
                 </p>
-                <a
-                href="Recipes.html"
+                <RouterLink
+                to="'/recipes"
                 class="inline-block bg-black text-white rounded-lg px-4 py-2 hover:bg-gray-700"
                 >
                     Browse Recipes
-                </a>
+                </RouterLink>
             </Card>
             <Card bg="bg-green-100">
                 <h2 class="text-2xl font-bold">Share Recipes</h2>
                 <p class="mt-2 mb-4">
                     Share your recipes with the world 
                 </p>
-                <a
-                href="add-Recipe.html"
+                <RouterLink
+                to="add-Recipe"
                 class="inline-block bg-green-500 text-white rounded-lg px-4 py-2 hover:bg-green-600"
                 >
                     Add Recipe
-                </a>
+                </RouterLink>
             </Card>
         </div>
       </div>
