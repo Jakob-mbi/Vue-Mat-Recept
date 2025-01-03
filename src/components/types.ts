@@ -15,4 +15,4 @@ type RecipesData = {
 recipes: Recipe[];
 };
 
-  export type { Recipe, RecipesData };
+export type { Recipe, RecipesData };
