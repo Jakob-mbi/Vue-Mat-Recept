@@ -21,11 +21,7 @@ const recipes = ref<Recipe[]>([]);
 onMounted(async () => {
     try {
         const response = await fetch('http://localhost:5000/recipes');
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
         recipes.value = await response.json();
-        console.log(recipes.value);
     } catch (error) {
         console.error('Error fetching recipes:', error);
     }
