@@ -1,8 +1,7 @@
 <script setup lang="ts">
 import { RouterLink } from 'vue-router';
-import recepieData from '../Recipes.json';
-import { RecipesData} from '@/types';
-import { ref } from 'vue';
+import {Recipe} from '@/types';
+import { ref, onMounted } from 'vue';
 import RecipeCard from './RecipeCard.vue';
 
 defineProps(
@@ -17,7 +16,20 @@ defineProps(
         }
     }
 );
-const recipes = ref<RecipesData>(recepieData);
+const recipes = ref<Recipe[]>([]);
+
+onMounted(async () => {
+    try {
+        const response = await fetch('http://localhost:5000/recipes');
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        recipes.value = await response.json();
+        console.log(recipes.value);
+    } catch (error) {
+        console.error('Error fetching recipes:', error);
+    }
+});
 </script>
 <template>
     <section class="bg-blue-50 px-4 py-10">
@@ -26,7 +38,7 @@ const recipes = ref<RecipesData>(recepieData);
                 Browse Recipes
             </h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <RecipeCard v-for="recepie in recipes.recipes.slice(0,limit || recipes.recipes.length)" :key="recepie.id" :recepie="recepie"/>
+                <RecipeCard v-for="recepie in recipes.slice(0,limit || recipes.length)" :key="recepie.id" :recepie="recepie"/>
 
             </div>
         </div>
