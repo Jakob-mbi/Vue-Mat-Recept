@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { RouterLink } from 'vue-router';
-import recepieData from '../../public/recipes.json';
+import recepieData from '../Recipes.json';
 import { RecipesData} from '@/types';
 import { ref } from 'vue';
 import RecipeCard from './RecipeCard.vue';
