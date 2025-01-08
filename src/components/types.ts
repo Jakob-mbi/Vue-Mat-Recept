@@ -9,6 +9,7 @@ type Recipe = {
     prep_time: string;
     cook_time: string;
     servings: number;
+    favourite: boolean;
   };
   
 type RecipesData = {

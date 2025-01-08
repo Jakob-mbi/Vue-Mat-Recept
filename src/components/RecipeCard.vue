@@ -11,6 +11,11 @@ const props = defineProps({
     }
 });
 const showFullIngredients = ref(false);
+const favourite = ref(props.recepie.favourite);
+
+const toggleFavourite = () => {
+    favourite.value = !favourite.value;
+};
 const toggleIngredients = () => {
     showFullIngredients.value = !showFullIngredients.value;
 };
@@ -59,11 +64,14 @@ const truncatedIngredients = computed(() => {
                 </div>
 
             </div>
-            <RouterLink
-            :to="'/recipes/' + props.recepie.id"
-            class="h-[36px] bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg text-center text-sm">
-                Read instructions
-            </RouterLink>
+            <div class="flex flex-col lg:flex-row mb-4 justify-between">
+                <RouterLink
+                :to="'/recipes/' + props.recepie.id"
+                class="h-[36px] bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg text-center text-sm">
+                    Read instructions
+                </RouterLink>
+                <i @click="toggleFavourite" :class="['pi',favourite?'pi-star-fill':'pi-star','mr-5' ,'text-xl']" ></i>
+            </div>
         </div>
     </div>
 </template>

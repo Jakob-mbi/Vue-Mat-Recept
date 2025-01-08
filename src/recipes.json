@@ -23,7 +23,8 @@
         ],
         "prep_time": "10 minutes",
         "cook_time": "15 minutes",
-        "servings": 2
+        "servings": 2,
+        "favourite": false
       },
       {
         "id": "2",
@@ -51,7 +52,8 @@
         ],
         "prep_time": "15 minutes",
         "cook_time": "25 minutes",
-        "servings": 4
+        "servings": 4,
+        "favourite": false
       },
       {
         "id": "3",
@@ -78,7 +80,8 @@
         ],
         "prep_time": "10 minutes",
         "cook_time": "10 minutes",
-        "servings": 2
+        "servings": 2,
+        "favourite": false
       },
       {
         "id": "4",
@@ -103,7 +106,8 @@
         ],
         "prep_time": "10 minutes",
         "cook_time": "15 minutes",
-        "servings": 4
+        "servings": 4,
+        "favourite": false
       },
       {
         "id": "5",
@@ -126,7 +130,8 @@
         ],
         "prep_time": "5 minutes",
         "cook_time": "10 minutes",
-        "servings": 2
+        "servings": 2,
+        "favourite": false
       },
       {
         "id": "6",
@@ -148,7 +153,8 @@
         ],
         "prep_time": "5 minutes",
         "cook_time": "0 minutes",
-        "servings": 2
+        "servings": 2,
+        "favourite": false
       },
       {
         "id": "7",
@@ -165,7 +171,8 @@
         ],
         "prep_time": "2 minutes",
         "cook_time": "8 minutes",
-        "servings": 2
+        "servings": 2,
+        "favourite": false
       },
       {
         "id": "8",
@@ -183,7 +190,8 @@
         ],
         "prep_time": "5 minutes",
         "cook_time": "0 minutes",
-        "servings": 2
+        "servings": 2,
+        "favourite": false
       },
       {
         "id": "9",
@@ -203,7 +211,8 @@
         ],
         "prep_time": "5 minutes",
         "cook_time": "10 minutes",
-        "servings": 2
+        "servings": 2,
+        "favourite": false
       },
       {
         "id": "10",
@@ -229,7 +238,8 @@
         ],
         "prep_time": "10 minutes",
         "cook_time": "12 minutes",
-        "servings": 24 
+        "servings": 24,
+        "favourite": false 
       }
     ]
   }

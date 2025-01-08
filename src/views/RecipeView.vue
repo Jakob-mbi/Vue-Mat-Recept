@@ -3,32 +3,22 @@
     import axios from 'axios';
     import type { Recipe } from './types';
 
-    import { reactive, onMounted } from 'vue';
+    import { ref, onMounted } from 'vue';
     import { useRoute,RouterLink } from 'vue-router';
 
     const route = useRoute();
 
     const recipeID = route.params.id;
 
-    interface State {
-      recipe: Recipe,
-      isLoding: boolean
-    }
-
-    const state = reactive<State>({
-        recipe: {},
-        isLoding: true
-    });
+    const recipes = ref<Recipe[]>([]);
 
     onMounted(async () => {
         try {
-            const response = await axios.get(`/api/recipes/${recipeID}`);
-            state.recipe = response.data;
+            const response = await axios.get(`http://localhost:5000/recipes/${recipeID}`);
+            recipes.value = response.data;
         } catch (error) {
             console.error(error);
-        } finally {
-            state.isLoding = false;
-        }
+        } 
     });
 </script>
 
@@ -67,11 +57,7 @@
             </div>
           </main>
 
-          <!-- Sidebar -->
           <aside>
-           
-
-            <!-- Manage -->
             <div class="bg-white p-6 rounded-lg shadow-md mt-6">
               <h3 class="text-xl font-bold mb-6">Manage Recipe</h3>
               <a
