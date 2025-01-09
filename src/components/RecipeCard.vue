@@ -4,6 +4,7 @@ import type { Recipe } from './types';
 import { RouterLink } from 'vue-router';
 
 
+
 const props = defineProps({
     recepie:{
         type:Object as () => Recipe,
