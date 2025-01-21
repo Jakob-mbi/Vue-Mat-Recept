@@ -1,37 +1,35 @@
 <script setup lang="ts">
-    
-    import axios from 'axios';
-    import type { Recipe } from './types';
+  import type { Recipe } from './types';
 
-    import { ref, onMounted,reactive } from 'vue';
-    import { useRoute,RouterLink } from 'vue-router';
+  import { ref, onMounted,reactive } from 'vue';
+  import { useRoute,RouterLink } from 'vue-router';
 
-    const route = useRoute();
+  const route = useRoute();
 
-    const recipeID = route.params.id;
-    
+  const recipeID = route.params.id;
+  
 
-    const toggleFavourite = () => {
-        favourite.value = !favourite.value;
-    };
+  const toggleFavourite = () => {
+      favourite.value = !favourite.value;
+  };
 
 
-    const state:Recipe = reactive({
-        recipe: { 
-        } as Recipe
-    });
-    
-    const favourite = ref(state.recipe.favourite);
+  const state:Recipe = reactive({
+      recipe: { 
+      } as Recipe
+  });
 
-    onMounted(async () => {
-        try {
-            const response = await await fetch(`http://localhost:5000/recipes/${recipeID}`);
-            state.recipe = await response.json();
-            console.log(state.recipe.servings);
-        } catch (error) {
-            console.error('Error fetching recipe:',error);
-        } 
-    });
+  const favourite = ref(state.recipe.favourite);
+
+  onMounted(async () => {
+      try {
+          const response = await await fetch(`http://localhost:5000/recipes/${recipeID}`);
+          state.recipe = await response.json();
+          console.log(state.recipe.servings);
+      } catch (error) {
+          console.error('Error fetching recipe:',error);
+      } 
+  });
 </script>
 
 <template>
