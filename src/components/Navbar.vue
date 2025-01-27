@@ -32,11 +32,7 @@
                     <li>
                         <RouterLink to="/recipes" :class="[isActiveLink('/recipes')?'text-green-900':'hover:text-green-700']">
                             Recipes</RouterLink>
-                    </li>
-                    <li>
-                        <RouterLink to="/add" :class="[isActiveLink('/recipes/add')?'text-green-900':'hover:text-green-700']">
-                            Add Recipes</RouterLink>
-                    </li>  
+                    </li> 
                 </ul>
             </div>
         </div>

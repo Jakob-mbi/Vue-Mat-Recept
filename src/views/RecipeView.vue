@@ -3,6 +3,8 @@
 
   import { ref, onMounted,reactive } from 'vue';
   import { useRoute,RouterLink } from 'vue-router';
+  import axios from 'axios';
+  import router from '@/router';
 
   const route = useRoute();
 
@@ -17,17 +19,10 @@
 
   const updateFavourite = async () => {
     try {
-        const response = await fetch(`http://localhost:5000/recipes/${recipeID}`,{
-            method:'PUT',
-            headers:{
-                'Content-Type':'application/json'
-            },
-            body: JSON.stringify({
-                favourite: favourite.value
-            })
-        });
-        const data = await response.json();
-        console.log(data);
+      const response = await axios.patch(`http://localhost:5000/recipes/${recipeID}`, {
+        favourite: favourite.value,
+      });
+      router.push(`/recipes/${recipeID}`);
     } catch (error) {
         console.error('Error updating favourite:',error);
     }

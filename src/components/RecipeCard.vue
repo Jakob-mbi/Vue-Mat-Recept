@@ -2,6 +2,8 @@
 import {ref, computed} from 'vue';
 import type { Recipe } from './types';
 import { RouterLink } from 'vue-router';
+import router from '@/router';
+import axios from 'axios';
 
 
 
@@ -11,12 +13,27 @@ const props = defineProps({
         required:true
     }
 });
+const recipeID = props.recepie.id;
 const showFullIngredients = ref(false);
 const favourite = ref(props.recepie.favourite);
 
 const toggleFavourite = () => {
     favourite.value = !favourite.value;
+
+    updateFavourite();
 };
+
+const updateFavourite = async () => {
+    try {
+      const response = await axios.patch(`http://localhost:5000/recipes/${recipeID}`, {
+        favourite: favourite.value,
+      });
+      router.push(`/recipes`);
+    } catch (error) {
+        console.error('Error updating favourite:',error);
+    }
+  };
+  
 const toggleIngredients = () => {
     showFullIngredients.value = !showFullIngredients.value;
 };
