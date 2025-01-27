@@ -13,7 +13,7 @@ import { RouterLink } from 'vue-router';
                     Browse our Recipes to find the perfect meal for you
                 </p>
                 <RouterLink
-                to="'/recipes"
+                to="/recipes"
                 class="inline-block bg-black text-white rounded-lg px-4 py-2 hover:bg-gray-700"
                 >
                     Browse Recipes
@@ -25,7 +25,7 @@ import { RouterLink } from 'vue-router';
                     Share your recipes with the world 
                 </p>
                 <RouterLink
-                to="add-Recipe"
+                to="/add"
                 class="inline-block bg-green-500 text-white rounded-lg px-4 py-2 hover:bg-green-600"
                 >
                     Add Recipe

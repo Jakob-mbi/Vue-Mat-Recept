@@ -34,7 +34,7 @@
                             Recipes</RouterLink>
                     </li>
                     <li>
-                        <RouterLink to="/recipes/add" :class="[isActiveLink('/recipes/add')?'text-green-900':'hover:text-green-700']">
+                        <RouterLink to="/add" :class="[isActiveLink('/recipes/add')?'text-green-900':'hover:text-green-700']">
                             Add Recipes</RouterLink>
                     </li>  
                 </ul>
