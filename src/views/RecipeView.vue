@@ -10,10 +10,30 @@
   
 
   const toggleFavourite = () => {
-      favourite.value = !favourite.value;
+    favourite.value = !favourite.value;
+
+    updateFavourite();
   };
 
+  const updateFavourite = async () => {
+    try {
+        const response = await fetch(`http://localhost:5000/recipes/${recipeID}`,{
+            method:'PUT',
+            headers:{
+                'Content-Type':'application/json'
+            },
+            body: JSON.stringify({
+                favourite: favourite.value
+            })
+        });
+        const data = await response.json();
+        console.log(data);
+    } catch (error) {
+        console.error('Error updating favourite:',error);
+    }
+  };
 
+  
   const state:Recipe = reactive({
       recipe: { 
       } as Recipe
@@ -25,7 +45,7 @@
       try {
           const response = await await fetch(`http://localhost:5000/recipes/${recipeID}`);
           state.recipe = await response.json();
-          console.log(state.recipe.servings);
+
       } catch (error) {
           console.error('Error fetching recipe:',error);
       } 
@@ -70,22 +90,6 @@
               
             </div>
           </main>
-
-          <!-- <aside>
-            <div class="bg-white p-6 rounded-lg shadow-md mt-6">
-              <h3 class="text-xl font-bold mb-6">Manage Recipe</h3>
-              <a
-                href="add-job.html"
-                class="bg-green-500 hover:bg-green-600 text-white text-center font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline mt-4 block"
-                >Edit Recipe</a
-              >
-              <button
-                class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline mt-4 block"
-              >
-                Delete Recipe
-              </button>
-            </div>
-          </aside> -->
         </div>
       </div>
     </section>
