@@ -12,15 +12,14 @@
   
 
   const toggleFavourite = () => {
-    favourite.value = !favourite.value;
-
+    state.recipe.favourite = !state.recipe.favourite;
     updateFavourite();
   };
 
   const updateFavourite = async () => {
     try {
       const response = await axios.patch(`http://localhost:5000/recipes/${recipeID}`, {
-        favourite: favourite.value,
+        favourite: state.recipe.favourite,
       });
       router.push(`/recipes/${recipeID}`);
     } catch (error) {
@@ -33,8 +32,6 @@
       recipe: { 
       } as Recipe
   });
-
-  const favourite = ref(state.recipe.favourite);
 
   onMounted(async () => {
       try {
@@ -67,7 +64,7 @@
                     Cook time: {{state.recipe.cook_time}}
                 </div>
               </div>
-              <i @click="toggleFavourite" :class="['pi',favourite?'pi-star-fill':'pi-star','mr-5' ,'text-xl']" ></i>
+              <i @click="toggleFavourite" :class="['pi',state.recipe.favourite?'pi-star-fill':'pi-star','mr-5' ,'text-xl']" ></i>
             </div>
 
             <div class="bg-white p-6 rounded-lg shadow-md mt-6">
